@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="playList"
+            type="com.example.myapplication.movieapp.domain.model.PlayList" />
+    </data>
+
+    <TextView
+        android:id="@+id/play_list_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:textSize="20sp"
+        android:gravity="center_vertical"
+        android:text="@{playList.name}"
+        tools:text="Add new playlist" />
+
+</layout>

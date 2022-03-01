@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="android.view.View"/>
+        <import type="com.example.myapplication.movieapp.ui.MovieConstants"/>
+        <variable
+            name="movie"
+            type="com.example.myapplication.movieapp.domain.model.Movie" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/movie_poster"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:baseUrl="@{MovieConstants.IMAGE_BASE_URL}"
+            app:path="@{movie.thumbnailUrl}"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            app:srcCompat="@android:drawable/btn_star"
+            android:id="@+id/like_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/like_margin"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/movie_title"
+            android:text="@{movie.name}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/movie_poster" />
+
+        <TextView
+            android:id="@+id/rating"
+            android:text="@{movie.rating.toString()}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="@{movie.rating != null ? View.VISIBLE : View.GONE}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/movie_title" />
+
+        <TextView
+            android:id="@+id/playlists"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{movie.playListName}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rating" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
